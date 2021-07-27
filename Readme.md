@@ -1,16 +1,10 @@
-# Pyramid-Net: Intra-layer Pyramid-scale Feature Aggregation for Retinal Vessel Segmentation
+# Quantization-based Multi-scale Ensemble Network for Accurate Biomedical Image Segmentation
 
-![1](./figures/0.pdf)
-
-## Abstract
-
-Retinal vessel segmentation plays an important role in the diagnosis of eye-related diseases and biomarkers discovery. Existing works perform multi-scale feature aggregation in an inter-layer manner, namely inter-layer feature aggregation. However, such an approach only fuses feature at either a lower scale or a higher scale, which may result with a low segmentation performance especially on thin vessels. This discovery motivates us to fuse multi-scale features in each layer, namely intra-layer feature aggregation, to mitigate the problem. Therefore, in this paper, we propose Pyramid-Net for accurate retinal vessel segmentation, which features intra-layer pyramid-scale aggregation blocks (IPABs). At each layer, IPABs generate two associated branches at a higher scale and a lower scale, respectively, and the two with the main brunch at the current scale operate in a pyramid-scale manner. Three further enhancements including pyramid inputs enhancement, deep pyramid supervision, and pyramid skip connections are proposed to boost the performance. We have evaluated Pyramid-Net on three public retinal fundus photography datasets (DRIVE, STARE, and CHASE-DB1). The experimental results show that Pyramid-Net can effectively improve the segmentation performance especially on thin vessels, and outperforms the current state-of-the-art methods on all the adopted three datasets. In addition, our method is more efficient than existing methods with a large reduction on computational cost.
+![1](./figures/1.png)
 
 
 
-## Architecture
 
-![1](./figures/1.pdf)
 
 ## Requirements
 
@@ -25,13 +19,15 @@ and the requirements highlighted in [requirements.txt](./requirements.txt) (for 
 
 ## Training
 
+*The default setting of QME-Net is as follows. The ensemble size K is 4, and Q1: 4-bit, Q2: 5-bit and Q3: 6-bit are the quantization bit for base learners B1, B2, B3, while Q0: 16-bit for meta learner B0.*
+
 To train the CE-Net based QME-Net with default setting in the paper on DRIVE dataset, run this command:
 
 ```train
 python train_pyramid.py 
 ```
 
-
+![2](./figures/2.png)
 
 ## Evaluation
 
@@ -41,13 +37,9 @@ To evaluate my model on DRIVE dataset, run:
 python eval_pyramid.py 
 ```
 
+![5](./figures/5.png)
 
 
-## Results Comparison on DRIVE dataset
-
-
-
-![1](./figures/2.pdf)
 
 
 
